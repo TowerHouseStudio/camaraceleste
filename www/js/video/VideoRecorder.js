@@ -1,4 +1,6 @@
-function VideoRecorder(){};
+function VideoRecorder(){
+    this.mBasePath = "http://www.camaraceleste.com.uy";
+};
 
 VideoRecorder.prototype.recordVideo = function(){
     var self = this;
@@ -27,8 +29,8 @@ VideoRecorder.prototype.recordVideo = function(){
 
     alert("record");
 // start video capture
-    //navigator.device.capture.captureVideo(captureSuccess, captureError);
-    this.uploadVideo("C:/video-js.swf", "image/jpeg");
+    navigator.device.capture.captureVideo(captureSuccess, captureError, {duration:8});
+    //this.uploadVideo("C:/video-js.swf", "image/jpeg");
 };
 
 VideoRecorder.prototype.uploadVideo = function(aFilePath, aType){
@@ -37,20 +39,20 @@ VideoRecorder.prototype.uploadVideo = function(aFilePath, aType){
 
     function completed(r) {
         alert("completed");
-        console.log("Code = " + r.responseCode);
-        console.log("Response = " + r.response);
-        console.log("Sent = " + r.bytesSent);
+        alert("Code = " + r.responseCode);
+        alert("Response = " + r.response);
+        alert("Sent = " + r.bytesSent);
     }
 
     function fail(error) {
         alert("Error: " + error);
         alert("An error has occurred: Code = " + error.code);
-        console.log("upload error source " + error.source);
-        console.log("upload error target " + error.target);
+        alert("upload error source " + error.source);
+        alert("upload error target " + error.target);
     }
 
-    var uri = encodeURI("http://towerhousestudio.com/projects/camara_celeste/camara_upload.php");
-
+    var uri = encodeURI(this.mBasePath + "/camara_upload.php");
+    alert(uri);
     var options = new FileUploadOptions();
     options.fileKey="file";
     options.fileName=aFilePath.substr(aFilePath.lastIndexOf('/')+1);

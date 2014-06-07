@@ -53,6 +53,6 @@ var app = {
         });
 
         var aTwit = new Twitter();
-        //aTwit.openApp();
+        aTwit.openApp();
     }
 };
