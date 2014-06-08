@@ -23,6 +23,14 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -55,6 +63,12 @@
             "PACKAGE_NAME": "com.towerhousestudio.camaraceleste"
         },
         "org.apache.cordova.file-transfer": {
+            "PACKAGE_NAME": "com.towerhousestudio.camaraceleste"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.towerhousestudio.camaraceleste"
+        },
+        "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.towerhousestudio.camaraceleste"
         }
     },

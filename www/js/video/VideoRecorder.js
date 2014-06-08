@@ -1,4 +1,6 @@
-function VideoRecorder(){};
+function VideoRecorder(){
+    this.mBasePath = "http://www.camaraceleste.com.uy/";
+};
 
 VideoRecorder.prototype.recordVideo = function(){
     var self = this;
@@ -27,29 +29,34 @@ VideoRecorder.prototype.recordVideo = function(){
 
     alert("record");
 // start video capture
-    //navigator.device.capture.captureVideo(captureSuccess, captureError);
-    this.uploadVideo("C:/video-js.swf", "image/jpeg");
+    navigator.device.capture.captureVideo(captureSuccess, captureError, {duration:8});
+    //this.uploadVideo("C:/video-js.swf", "image/jpeg");
 };
 
 VideoRecorder.prototype.uploadVideo = function(aFilePath, aType){
 
+    var self = this;
     var aProgress = $($.find("#upload_percent"));
 
     function completed(r) {
         alert("completed");
-        console.log("Code = " + r.responseCode);
-        console.log("Response = " + r.response);
-        console.log("Sent = " + r.bytesSent);
+        var aJson = JSON.parse(r.response);
+        alert("Response = " + aJson);
+        alert("Response = " + aJson.success);
+        if(aJson.success == 1){
+            alert("about to twit");
+            self.uploadToTwitter(aJson.message);
+        }
     }
 
     function fail(error) {
         alert("Error: " + error);
         alert("An error has occurred: Code = " + error.code);
-        console.log("upload error source " + error.source);
-        console.log("upload error target " + error.target);
+        alert("upload error source " + error.source);
+        alert("upload error target " + error.target);
     }
 
-    var uri = encodeURI("http://towerhousestudio.com/projects/camara_celeste/camara_upload.php");
+    var uri = encodeURI(this.mBasePath + "camara_upload.php");
 
     var options = new FileUploadOptions();
     options.fileKey="file";
@@ -63,5 +70,26 @@ VideoRecorder.prototype.uploadVideo = function(aFilePath, aType){
             aProgress.html("Progress: " + ((progressEvent.loaded / progressEvent.total)) + "%");
         }
     };
-    ft.upload(aFilePath, uri, completed, fail, options);
+    alert("Start upload");
+    try{
+        ft.upload(aFilePath, uri, completed, fail, options);
+    }catch(e){
+        alert(e);
+    }
+
+};
+
+VideoRecorder.prototype.uploadToTwitter = function(aVideoUrl){
+
+    /*var appTestUrl = (device.platform == "Android") ? 'twitter://' : 'com.twitter.android';
+
+    appAvailability.check(appTestUrl, function(availability) {
+        // availability is either true or false
+        if(availability) { console.log('Twitter is available'); }
+    });*/
+
+    var aUrl = this.mBasePath + aVideoUrl;
+
+    var aTwit = new Twitter();
+    aTwit.openApp("%23test " + encodeURI(aUrl));
 };

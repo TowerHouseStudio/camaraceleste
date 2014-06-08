@@ -6,6 +6,7 @@ f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\com\t
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\com\towerhousestudio\camaraceleste\R$string.class \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\com\towerhousestudio\camaraceleste\R$xml.class \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\com\towerhousestudio\camaraceleste\R.class \
+f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\org\apache\cordova\device\Device.class \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\org\apache\cordova\file\ContentFilesystem.class \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\org\apache\cordova\file\DirectoryManager.class \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\org\apache\cordova\file\EncodingException.class \
@@ -78,4 +79,5 @@ f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\org\a
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\org\apache\cordova\mediacapture\Capture$3.class \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\org\apache\cordova\mediacapture\Capture.class \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\org\apache\cordova\mediacapture\FileHelper.class \
+f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen.class \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\ant-build\dexedLibs\classes-d5a1ffb94325e4bf03a401e086a781a2.jar \

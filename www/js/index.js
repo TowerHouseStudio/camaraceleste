@@ -27,9 +27,15 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
 
+        var aHeight = screen.height;
+
+        $('body').css('height', aHeight);
+
+        app.ON_DEVICE = true;
         if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
             document.addEventListener("deviceready", this.onDeviceReady, false);
         } else {
+            app.ON_DEVICE = false;
             this.onDeviceReady(); //this is the browser
         }
 
@@ -45,14 +51,35 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 
+
+        function isTwitterAvailable(availability){
+            // availability is either true or false
+            if(availability) {
+                var aHomePage = new HomePage();
+                aHomePage.initialize();
+            }else{
+                //show no avail
+                var aBody = $($.find("body"));
+                aBody.removeClass('home_page');
+                aBody.addClass('no_twitter_page');
+            }
+        };
+
+
+        if(app.ON_DEVICE){
+            //Check if twitter is installed
+            var appTestUrl = (device.platform == "Android") ? 'com.twitter.android' : 'twitter://';
+            appAvailability.check(appTestUrl, isTwitterAvailable);
+        }else{
+            isTwitterAvailable(true);
+        }
+
+/*
         var aRecordButton = $($.find('#record_button'));
         aRecordButton.on('tap', function(aElement){
             alert("tap");
             var av = new VideoRecorder();
             av.recordVideo();
-        });
-
-        var aTwit = new Twitter();
-        //aTwit.openApp();
+        });*/
     }
 };

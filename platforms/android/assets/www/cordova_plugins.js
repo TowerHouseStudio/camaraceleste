@@ -71,6 +71,20 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.device/www/device.js",
+        "id": "org.apache.cordova.device.device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
+        "id": "org.apache.cordova.splashscreen.SplashScreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -206,6 +220,8 @@ module.exports.metadata =
     "org.apache.cordova.inappbrowser": "0.4.0",
     "org.apache.cordova.media-capture": "0.3.0",
     "org.apache.cordova.file-transfer": "0.4.3",
+    "org.apache.cordova.device": "0.2.9",
+    "org.apache.cordova.splashscreen": "0.3.0",
     "org.apache.cordova.file": "1.1.0"
 }
 // BOTTOM OF METADATA
