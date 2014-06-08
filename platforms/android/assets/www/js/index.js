@@ -26,6 +26,11 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+
+        var aHeight = screen.height;
+
+        $('body').css('height', aHeight);
+
         app.ON_DEVICE = true;
         if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
             document.addEventListener("deviceready", this.onDeviceReady, false);
@@ -50,7 +55,8 @@ var app = {
         function isTwitterAvailable(availability){
             // availability is either true or false
             if(availability) {
-                alert("tiene twitter");
+                var aHomePage = new HomePage();
+                aHomePage.initialize();
             }else{
                 //show no avail
                 var aBody = $($.find("body"));
@@ -62,11 +68,10 @@ var app = {
 
         if(app.ON_DEVICE){
             //Check if twitter is installed
-            var appTestUrl = (device.platform == "Android") ? 'twitter://' : 'com.twitter.android';
-
+            var appTestUrl = (device.platform == "Android") ? 'com.twitter.android' : 'twitter://';
             appAvailability.check(appTestUrl, isTwitterAvailable);
         }else{
-            isTwitterAvailable(false);
+            isTwitterAvailable(true);
         }
 
 /*
@@ -75,6 +80,9 @@ var app = {
             alert("tap");
             var av = new VideoRecorder();
             av.recordVideo();
+
         });*/
+
+
     }
 };

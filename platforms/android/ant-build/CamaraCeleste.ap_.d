@@ -43,9 +43,11 @@ f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\cordova_plug
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\css \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\img \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\index.html \
+f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\index.zip \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\js \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\plugins \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\res \
+f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\css\home_page.css \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\css\index.css \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\css\pages.css \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\img\background.jpg \
@@ -56,6 +58,7 @@ f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\img\needs_tw
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\img\rec.png \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\img\uploading.jpg \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\img\view_more.png \
+f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\js\HomePage.js \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\js\index.js \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\js\libs \
 f:\work\TowerHouseStudio\camaraceleste\platforms\android\assets\www\js\Twitter \

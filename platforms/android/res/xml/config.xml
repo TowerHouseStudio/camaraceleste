@@ -41,4 +41,7 @@
     <gap:plugin name="com.ohh2ahh.plugins.appavailability" />
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
 </widget>

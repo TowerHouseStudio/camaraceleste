@@ -1,22 +1,26 @@
-function VideoRecorder(){
-<<<<<<< HEAD
+function VideoRecorder(onUploading, onCancel, onProgress, onUploadComplete){
     this.mBasePath = "http://www.camaraceleste.com.uy/";
-=======
-    this.mBasePath = "http://www.camaraceleste.com.uy";
->>>>>>> 821f11ad2da98908c9e7196c17e48339487e6a31
+    this.mOnUploading = onUploading;
+    this.mOnCancel = onCancel;
+    this.mOnProgress = onProgress;
+    this.mOnUploadComplete = onUploadComplete;
 };
 
 VideoRecorder.prototype.recordVideo = function(){
     var self = this;
+
+    function capture(){
+        navigator.device.capture.captureVideo(captureSuccess, captureError, {duration:8});
+    }
+
     // capture callback
     var captureSuccess = function(mediaFiles) {
-        alert("success");
 
         if(mediaFiles.length >= 1){
+            self.mOnUploading();
             var aMedia = mediaFiles[0];
 
             var aType = aMedia.type;
-            alert("Type: " + aType);
 
             var aPath = mediaFiles[0].fullPath;
 
@@ -27,14 +31,22 @@ VideoRecorder.prototype.recordVideo = function(){
 
 // capture error callback
     var captureError = function(error) {
-        alert("Error: " + error);
-        navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-    };
 
-    alert("record");
-// start video capture
-    navigator.device.capture.captureVideo(captureSuccess, captureError, {duration:8});
-    //this.uploadVideo("C:/video-js.swf", "image/jpeg");
+        function response(aButtonIndex){
+            if(aButtonIndex == 1){
+                //Intentar de nuevo
+                capture();
+            }else{
+                //No hacer nada
+                self.mOnCancel();
+            }
+        }
+
+        navigator.notification.confirm("Se produjo un error al grabar el video, quires intentarlo de nuevo?", response, "Intentalo de nuevo", ['Si', 'No']);
+    };
+    // start video capture
+    capture();
+
 };
 
 VideoRecorder.prototype.uploadVideo = function(aFilePath, aType){
@@ -42,66 +54,56 @@ VideoRecorder.prototype.uploadVideo = function(aFilePath, aType){
     var self = this;
     var aProgress = $($.find("#upload_percent"));
 
+    function upload(){
+        var uri = encodeURI(self.mBasePath + "camara_upload.php");
+
+
+        var options = new FileUploadOptions();
+        options.fileKey="file";
+        options.fileName=aFilePath.substr(aFilePath.lastIndexOf('/')+1);
+        options.mimeType=aType;
+
+
+        var ft = new FileTransfer();
+        ft.onprogress = function(progressEvent) {
+            if (progressEvent.lengthComputable) {
+                self.mOnProgress(parseInt((progressEvent.loaded / progressEvent.total)*100));
+                //aProgress.html("Progress: " + ((progressEvent.loaded / progressEvent.total)) + "%");
+            }
+        };
+        ft.upload(aFilePath, uri, completed, fail, options);
+    }
+
     function completed(r) {
-        alert("completed");
-<<<<<<< HEAD
         var aJson = JSON.parse(r.response);
-        alert("Response = " + aJson);
-        alert("Response = " + aJson.success);
         if(aJson.success == 1){
-            alert("about to twit");
             self.uploadToTwitter(aJson.message);
         }
-=======
-        alert("Code = " + r.responseCode);
-        alert("Response = " + r.response);
-        alert("Sent = " + r.bytesSent);
->>>>>>> 821f11ad2da98908c9e7196c17e48339487e6a31
+
     }
 
     function fail(error) {
-        alert("Error: " + error);
-        alert("An error has occurred: Code = " + error.code);
-        alert("upload error source " + error.source);
-        alert("upload error target " + error.target);
-    }
-
-<<<<<<< HEAD
-    var uri = encodeURI(this.mBasePath + "camara_upload.php");
-
-=======
-    var uri = encodeURI(this.mBasePath + "/camara_upload.php");
-    alert(uri);
->>>>>>> 821f11ad2da98908c9e7196c17e48339487e6a31
-    var options = new FileUploadOptions();
-    options.fileKey="file";
-    options.fileName=aFilePath.substr(aFilePath.lastIndexOf('/')+1);
-    options.mimeType=aType;
-
-
-    var ft = new FileTransfer();
-    ft.onprogress = function(progressEvent) {
-        if (progressEvent.lengthComputable) {
-            aProgress.html("Progress: " + ((progressEvent.loaded / progressEvent.total)) + "%");
+        function response(aButtonIndex){
+            if(aButtonIndex == 1){
+                //Intentar de nuevo
+                upload();
+            }else{
+                //No hacer nada
+                self.mOnCancel();
+            }
         }
-    };
-    alert("Start upload");
-    try{
-        ft.upload(aFilePath, uri, completed, fail, options);
-    }catch(e){
-        alert(e);
+
+        navigator.notification.confirm("Se produjo un error al subir el video, quires intentarlo de nuevo?", response, "Intentalo de nuevo", ['Si', 'No']);
+
     }
+
+    upload();
 
 };
 
 VideoRecorder.prototype.uploadToTwitter = function(aVideoUrl){
 
-    /*var appTestUrl = (device.platform == "Android") ? 'twitter://' : 'com.twitter.android';
-
-    appAvailability.check(appTestUrl, function(availability) {
-        // availability is either true or false
-        if(availability) { console.log('Twitter is available'); }
-    });*/
+    this.mOnUploadComplete(aVideoUrl);
 
     var aUrl = this.mBasePath + aVideoUrl;
 

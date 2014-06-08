@@ -1,3 +1,2 @@
-.home_page { background-image: url('../img/background.jpg'); background-size: cover; background-repeat: no-repeat;}
-.no_twitter_page { background-image: url('../img/needs_twitter.jpg'); background-size: cover; background-repeat: no-repeat;}
+.no_twitter_page { background-image: url('../img/needs_twitter.jpg'); background-size: contain; background-repeat: no-repeat; background-position-x: center;}
 

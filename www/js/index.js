@@ -60,7 +60,6 @@ var app = {
             }else{
                 //show no avail
                 var aBody = $($.find("body"));
-                aBody.removeClass('home_page');
                 aBody.addClass('no_twitter_page');
             }
         };
@@ -80,13 +79,9 @@ var app = {
             alert("tap");
             var av = new VideoRecorder();
             av.recordVideo();
-<<<<<<< HEAD
-        });*/
-=======
-        });
 
-        var aTwit = new Twitter();
-        aTwit.openApp();
->>>>>>> 821f11ad2da98908c9e7196c17e48339487e6a31
+        });*/
+
+
     }
 };

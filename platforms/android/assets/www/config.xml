@@ -18,4 +18,5 @@
     <gap:plugin name="com.ohh2ahh.plugins.appavailability" />
     <gap:plugin name="org.apache.cordova.device"/>
     <gap:plugin name="org.apache.cordova.splashscreen" />
+
 </widget>

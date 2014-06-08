@@ -47,6 +47,7 @@ VideoRecorder.prototype.uploadVideo = function(aFilePath, aType){
             alert("about to twit");
             self.uploadToTwitter(aJson.message);
         }
+
     }
 
     function fail(error) {
@@ -57,6 +58,7 @@ VideoRecorder.prototype.uploadVideo = function(aFilePath, aType){
     }
 
     var uri = encodeURI(this.mBasePath + "camara_upload.php");
+
 
     var options = new FileUploadOptions();
     options.fileKey="file";
