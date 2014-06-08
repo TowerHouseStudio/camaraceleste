@@ -77,7 +77,11 @@ VideoRecorder.prototype.uploadVideo = function(aFilePath, aType){
     function completed(r) {
         var aJson = JSON.parse(r.response);
         if(aJson.success == 1){
-            self.uploadToTwitter(aJson.message);
+            self.mOnProgress(100);
+            setTimeout(function(){
+                self.uploadToTwitter(aJson.message);
+            }, 3000);
+
         }
 
     }
@@ -108,5 +112,5 @@ VideoRecorder.prototype.uploadToTwitter = function(aVideoUrl){
     var aUrl = this.mBasePath + aVideoUrl;
 
     var aTwit = new Twitter();
-    aTwit.openApp("%23test " + encodeURI(aUrl));
+    aTwit.openApp("%23camaraceleste%0A" + encodeURI(aUrl));
 };

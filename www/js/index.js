@@ -51,10 +51,29 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 
+        function loadConfigJSON(){
+            $.ajax('http://www.camaraceleste.com.uy/config/config.json', {
+                dataType:'jsonp'
+            });
+        }
+
+        //This function is called from inside the jsonp file
+        window.loadJsonp = function(json){
+            var aHomePage = null;
+            if (!json.Error) {
+                aHomePage = new HomePage(json);
+            }
+            else {
+                aHomePage = new HomePage();
+            }
+            aHomePage.initialize();
+            if(app.ON_DEVICE == true){ navigator.splashscreen.hide(); }
+        }
 
         function isTwitterAvailable(availability){
             // availability is either true or false
             if(availability) {
+                //loadConfigJSON();
                 var aHomePage = new HomePage();
                 aHomePage.initialize();
             }else{
@@ -62,6 +81,7 @@ var app = {
                 var aBody = $($.find("body"));
                 aBody.addClass('no_twitter_page');
             }
+            if(app.ON_DEVICE == true){ navigator.splashscreen.hide(); }
         };
 
 
