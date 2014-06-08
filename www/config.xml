@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<<<<<<< HEAD
+<widget id="com.towerhousestudio.camaraceleste" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>CamaraCeleste</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="orientation" value="portrait" />
+    <preference name="phonegap-version" value="3.4.0" />
+    <gap:plugin name="org.apache.cordova.file"/>
+    <gap:plugin name="org.apache.cordova.media-capture"/>
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+    <gap:plugin name="org.apache.cordova.inappbrowser"/>
+    <gap:plugin name="com.ohh2ahh.plugins.appavailability" />
+    <gap:plugin name="org.apache.cordova.device"/>
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+=======
+<widget id="com.towerhousestudio.camaraceleste" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+	<preference name="orientation" value="portrait" />
+	<preference name="phonegap-version" value="3.4.0" />
+    <name>CamaraCeleste</name>
+    <description>
+        Camara Celeste
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        AppLoad
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <gap:plugin name="org.apache.cordova.file" version="1.0.1" />
+    <gap:plugin name="org.apache.cordova.file-transfer" version="0.4.2" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.2.4" />
+    <gap:plugin name="org.apache.cordova.media-capture" version="0.2.8" />
+>>>>>>> 821f11ad2da98908c9e7196c17e48339487e6a31
+</widget>
